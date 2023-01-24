@@ -1,25 +1,60 @@
 import Link from "next/link";
+import { Fragment } from "react";
+import styled from "styled-components";
+import { StyledButton } from "./UI/Button";
 
-// Top navbar
+const StyledNavbar = styled.nav`
+  height: 70px;
+  width: 100%;
+  background: white;
+  color: var(--colors-text);
+  padding: 0 10rem;
+  font-weight: bold;
+  border-bottom: 1px solid var(--color-gray);
+  z-index: 99;
+
+  & ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  & img {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+  }
+
+  & li {
+    border-radius: 50%;
+  }
+`;
+
 export default function Navbar() {
   const user = null;
   const username = null;
 
   return (
-    <nav className="navbar">
+    <StyledNavbar>
       <ul>
         <li>
           <Link href="/">
-            <button className="btn-logo">FEED</button>
+            <StyledButton className="btn-logo">FEED</StyledButton>
           </Link>
         </li>
 
-        {/* user is signed-in and has username */}
+        {/* user signed */}
+
         {username && (
-          <>
+          <Fragment>
             <li className="push-left">
               <Link href="/admin">
-                <button className="btn-blue">Write Posts</button>
+                <StyledButton color="blue">Write Posts</StyledButton>
               </Link>
             </li>
             <li>
@@ -27,18 +62,18 @@ export default function Navbar() {
                 <img src={user?.photoURL} />
               </Link>
             </li>
-          </>
+          </Fragment>
         )}
 
-        {/* user is not signed OR has not created username */}
+        {/* user not signed */}
         {!username && (
           <li>
             <Link href="/enter">
-              <button className="btn-blue">Log in</button>
+              <StyledButton color="blue">Log in</StyledButton>
             </Link>
           </li>
         )}
       </ul>
-    </nav>
+    </StyledNavbar>
   );
 }
