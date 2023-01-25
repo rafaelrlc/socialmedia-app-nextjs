@@ -36,8 +36,8 @@ const StyledNavbar = styled.nav`
 `;
 
 export default function Navbar() {
-  const user = null;
-  const username = null;
+  const user = true;
+  const username = true;
 
   return (
     <StyledNavbar>

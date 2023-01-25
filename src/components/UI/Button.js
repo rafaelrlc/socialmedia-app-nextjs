@@ -31,6 +31,11 @@ export const StyledButton = styled.button`
     color: var(--color-text);
   }
 
+  &.btn-google img {
+    width: 30px;
+    margin-right: 10px;
+  }
+
   &.btn-logo {
     background-color: var(--color-text);
     color: white;
