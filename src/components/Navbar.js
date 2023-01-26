@@ -2,6 +2,8 @@ import Link from "next/link";
 import { Fragment } from "react";
 import styled from "styled-components";
 import { StyledButton } from "./UI/Button";
+import { useAuth } from "@/hooks/useAuth";
+import UserContext from "@/lib/userContext";
 
 const StyledNavbar = styled.nav`
   height: 70px;
@@ -36,8 +38,7 @@ const StyledNavbar = styled.nav`
 `;
 
 export default function Navbar() {
-  const user = true;
-  const username = true;
+  const { user, username } = useAuth();
 
   return (
     <StyledNavbar>

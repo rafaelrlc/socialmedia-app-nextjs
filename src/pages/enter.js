@@ -1,12 +1,12 @@
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { auth } from "@/lib/firebase";
 import { StyledButton } from "@/components/UI/Button";
+import { useAuth } from "@/hooks/useAuth";
 
 const provider = new GoogleAuthProvider();
 
 const Enter = (props) => {
-  const user = null;
-  const username = null;
+  const { user, username } = useAuth();
 
   const signInWithGoogle = async () => {
     try {
@@ -14,7 +14,8 @@ const Enter = (props) => {
       const result = await signInWithPopup(auth, provider);
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
-      const user = result.user;
+      const userLogged = result.user;
+
       //...
     } catch (error) {
       const errorCode = error.code;

@@ -1,13 +1,14 @@
 import "@/styles/globals.css";
-import { Fragment } from "react";
 import Navbar from "@/components/Navbar";
 import { Toaster } from "react-hot-toast";
+import UserContextProvider from "@/lib/userProvider";
+
 export default function App({ Component, pageProps }) {
   return (
-    <Fragment>
+    <UserContextProvider>
       <Navbar></Navbar>
       <Component {...pageProps} />
       <Toaster></Toaster>
-    </Fragment>
+    </UserContextProvider>
   );
 }
