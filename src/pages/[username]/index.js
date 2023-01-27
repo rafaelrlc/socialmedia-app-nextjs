@@ -1,7 +1,10 @@
+import { useAuth } from "@/hooks/useAuth";
+
 const UserProfilePage = () => {
+  const { username } = useAuth();
   return (
     <main>
-      <h1>users profile</h1>
+      <h1>{username}'s Profile</h1>
     </main>
   );
 };

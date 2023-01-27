@@ -3,9 +3,9 @@ import { useAuth } from "@/hooks/useAuth";
 import { StyledButton } from "./UI/Button";
 import { Input } from "./UI/Input";
 import debounce from "lodash.debounce";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 import { db } from "@/lib/firebase";
-import { find } from "lodash";
+
 const UsernameForm = () => {
   const [usernameValue, setUsernameValue] = useState("");
   const [isValid, setIsValid] = useState(false);
@@ -17,8 +17,20 @@ const UsernameForm = () => {
     checkUsername(usernameValue);
   }, [usernameValue]);
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
+    const userDoc = doc(db, "users", user.uid);
+    const usernameDoc = doc(db, "usernames", usernameValue);
+
+    await setDoc(userDoc, {
+      displayName: user.displayName,
+      photoURL: user.photoURL,
+      username: usernameValue,
+    });
+
+    await setDoc(usernameDoc, {
+      uid: user.uid,
+    });
   };
 
   const changeHandler = (e) => {
@@ -65,7 +77,9 @@ const UsernameForm = () => {
             value={usernameValue}
             onChange={changeHandler}
           ></Input>
-          <StyledButton color="green">Choose</StyledButton>
+          <StyledButton color="green" disabled={!isValid}>
+            Choose
+          </StyledButton>
           <br />
           <h3>states:</h3>
           <div>
