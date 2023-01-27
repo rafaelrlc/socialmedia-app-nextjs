@@ -2,7 +2,7 @@ import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { auth } from "@/lib/firebase";
 import { StyledButton } from "@/components/UI/Button";
 import { useAuth } from "@/hooks/useAuth";
-
+import UsernameForm from "@/components/UsernameForm";
 const provider = new GoogleAuthProvider();
 
 const Enter = (props) => {
@@ -42,9 +42,5 @@ const Enter = (props) => {
     </main>
   );
 };
-
-function UsernameForm() {
-  return null;
-}
 
 export default Enter;

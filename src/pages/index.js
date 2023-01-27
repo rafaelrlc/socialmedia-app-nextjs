@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
-import Spinner from "../components/Spinner";
+import Spinner from "../components/UI/Spinner";
 import toast from "react-hot-toast";
 
 export default function Home() {
