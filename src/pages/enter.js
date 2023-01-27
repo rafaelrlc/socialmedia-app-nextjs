@@ -1,5 +1,5 @@
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { auth } from "@/lib/firebase";
+import { auth } from "@/firebase";
 import { StyledButton } from "@/components/UI/Button";
 import { useAuth } from "@/hooks/useAuth";
 import UsernameForm from "@/components/UsernameForm";
