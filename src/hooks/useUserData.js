@@ -9,6 +9,7 @@ export function useUserData() {
 
   useEffect(() => {
     let unsub;
+    console.log("rodou");
     if (user) {
       const userCollectionRef = doc(db, "users", user.uid);
 
@@ -21,12 +22,11 @@ export function useUserData() {
           setUsername(doc.data()?.username);
         }
       );
-      console.log(unsub);
     } else {
       setUsername(null);
     }
     return unsub;
   }, [user]);
 
-  return { user, username };
+  return { user, username }; //set the userContext value
 }

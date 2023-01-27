@@ -9,7 +9,7 @@ import { db } from "@/lib/firebase";
 const UsernameForm = () => {
   const [usernameValue, setUsernameValue] = useState("");
   const [isValid, setIsValid] = useState(false);
-  const [loading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const { user, username } = useAuth();
 
@@ -61,6 +61,7 @@ const UsernameForm = () => {
 
         console.log("Firestore read executed!");
         setIsValid(!documentExists);
+        setIsLoading(false);
       }
     }, 500),
     []
@@ -77,6 +78,11 @@ const UsernameForm = () => {
             value={usernameValue}
             onChange={changeHandler}
           ></Input>
+          <UsernameMessage
+            username={usernameValue}
+            isValid={isValid}
+            loading={isLoading}
+          ></UsernameMessage>
           <StyledButton color="green" disabled={!isValid}>
             Choose
           </StyledButton>
@@ -85,7 +91,7 @@ const UsernameForm = () => {
           <div>
             Username: {usernameValue}
             <br />
-            Loading: {loading.toString()}
+            Loading: {isLoading.toString()}
             <br />
             Username Valid: {isValid.toString()}
           </div>
@@ -94,5 +100,17 @@ const UsernameForm = () => {
     )
   );
 };
+
+function UsernameMessage({ username, isValid, loading }) {
+  if (loading) {
+    return <p>Checking...</p>;
+  } else if (isValid) {
+    return <p className="text-success">{username} is available!</p>;
+  } else if (username && !isValid) {
+    return <p className="text-danger">That username is taken!</p>;
+  } else {
+    return <p></p>;
+  }
+}
 
 export default UsernameForm;
