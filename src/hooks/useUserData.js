@@ -4,13 +4,14 @@ import { doc, onSnapshot } from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 export function useUserData() {
-  const [user] = useAuthState(auth);
+  const [user, setUser] = useState(null);
   const [username, setUsername] = useState(null);
 
   useEffect(() => {
     let unsub;
-    console.log("rodou");
+
     if (user) {
+      console.log("oi");
       const userCollectionRef = doc(db, "users", user.uid);
 
       unsub = onSnapshot(
@@ -28,5 +29,5 @@ export function useUserData() {
     return unsub;
   }, [user]);
 
-  return { user, username }; //set the userContext value
+  return { user, username, setUser }; //set the userContext value
 }

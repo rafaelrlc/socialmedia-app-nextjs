@@ -21,7 +21,11 @@ const UsernameForm = () => {
     e.preventDefault();
     const userDoc = doc(db, "users", user.uid);
     const usernameDoc = doc(db, "usernames", usernameValue);
+    // const testDoc = doc(db, "test", user.uid);
 
+    // await setDoc(testDoc, {
+    //   testeDelete: "testadnooooorafinha",
+    // });
     await setDoc(userDoc, {
       displayName: user.displayName,
       photoURL: user.photoURL,

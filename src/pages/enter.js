@@ -6,7 +6,8 @@ import UsernameForm from "@/components/UsernameForm";
 const provider = new GoogleAuthProvider();
 
 const Enter = (props) => {
-  const { user, username } = useAuth();
+  const { user, username, setUser } = useAuth();
+  console.log(user, username);
 
   const signInWithGoogle = async () => {
     try {
@@ -15,6 +16,7 @@ const Enter = (props) => {
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
       const userLogged = result.user;
+      setUser(userLogged);
 
       //...
     } catch (error) {
@@ -28,16 +30,30 @@ const Enter = (props) => {
 
   return (
     <main>
+      <button onClick={() => console.log(user, username)}>press</button>
       {user ? (
         !username ? (
           <UsernameForm />
         ) : (
-          <StyledButton onClick={() => auth.signOut()}>Sign Out</StyledButton>
+          <div>
+            {" "}
+            <StyledButton
+              onClick={() => {
+                auth.signOut();
+                setUser(null);
+              }}
+            >
+              Sign Out
+            </StyledButton>
+          </div>
         )
       ) : (
-        <StyledButton className="btn-google" onClick={signInWithGoogle}>
-          <img src={"/Google__G__Logo.svg.png"} /> Sign in with Google
-        </StyledButton>
+        <div>
+          {" "}
+          <StyledButton className="btn-google" onClick={signInWithGoogle}>
+            <img src={"/Google__G__Logo.svg.png"} /> Sign in with Google
+          </StyledButton>
+        </div>
       )}
     </main>
   );
