@@ -1,12 +1,12 @@
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { auth } from "@/firebase";
+import { auth } from "@/lib/firebase";
 import { StyledButton } from "@/components/UI/Button";
 import { useAuth } from "@/hooks/useAuth";
 import UsernameForm from "@/components/UsernameForm";
 const provider = new GoogleAuthProvider();
 
 const Enter = (props) => {
-  const { user, username, setUser } = useAuth();
+  const { user, username } = useAuth();
   console.log(user, username);
 
   const signInWithGoogle = async () => {
@@ -16,7 +16,6 @@ const Enter = (props) => {
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
       const userLogged = result.user;
-      setUser(userLogged);
 
       //...
     } catch (error) {
@@ -40,7 +39,6 @@ const Enter = (props) => {
             <StyledButton
               onClick={() => {
                 auth.signOut();
-                setUser(null);
               }}
             >
               Sign Out

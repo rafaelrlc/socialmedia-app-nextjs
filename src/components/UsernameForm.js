@@ -4,7 +4,7 @@ import { StyledButton } from "./UI/Button";
 import { Input } from "./UI/Input";
 import debounce from "lodash.debounce";
 import { doc, getDoc, setDoc } from "firebase/firestore";
-import { db } from "@/firebase";
+import { db } from "@/lib/firebase";
 
 const UsernameForm = () => {
   const [usernameValue, setUsernameValue] = useState("");

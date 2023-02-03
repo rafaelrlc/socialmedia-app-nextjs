@@ -16,9 +16,11 @@
     "lodash.debounce": "^4.0.8",
     "next": "13.1.5",
     "react": "18.2.0",
+    "react-animated-heart": "^0.0.7",
     "react-dom": "18.2.0",
     "react-firebase-hooks": "^5.1.1",
     "react-hot-toast": "^2.4.0",
+    "react-icons": "^4.7.1",
     "styled-components": "^5.3.6"
   },
   "devDependencies": {

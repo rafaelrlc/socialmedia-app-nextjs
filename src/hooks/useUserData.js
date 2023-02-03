@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { db, auth } from "@/firebase";
-import { doc, onSnapshot } from "firebase/firestore";
+import { db, auth } from "@/lib/firebase";
+import { doc } from "firebase/firestore";
+import { onSnapshot } from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 export function useUserData() {
-  const [user, setUser] = useState(null);
+  const [user] = useAuthState(auth);
   const [username, setUsername] = useState(null);
 
   useEffect(() => {
@@ -29,5 +30,5 @@ export function useUserData() {
     return unsub;
   }, [user]);
 
-  return { user, username, setUser }; //set the userContext value
+  return { user, username }; //set the userContext value
 }
