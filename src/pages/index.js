@@ -41,13 +41,14 @@ export default function Home(props) {
       limit(LIMIT)
     );
 
-    const newPosts = (await getDocs(q)).docs.map((doc) => doc.data());
+    let newPosts = await getDocs(q);
+    newPosts = newPosts.docs.map((doc) => doc.data());
 
     setPosts(posts.concat(newPosts));
     setIsLoading(false);
 
     if (newPosts.length < LIMIT) {
-      setPostsEnd(true);
+      setPostsEnd(true); // end
     }
   };
   return (
@@ -60,6 +61,7 @@ export default function Home(props) {
           More
         </StyledButton>
       )}
+      {postsEnd && "You have reached the end!"}
     </main>
   );
 }

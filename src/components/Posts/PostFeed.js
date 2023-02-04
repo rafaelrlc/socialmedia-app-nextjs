@@ -2,11 +2,11 @@ import Link from "next/link";
 import PostItem from "./PostItem";
 
 const PostFeed = ({ posts, admin }) => {
-  return posts
-    ? posts.map((post) => (
-        <PostItem post={post} key={post.slug} admin={admin} />
-      ))
-    : null;
+  const listPost = posts.map((post) => (
+    <PostItem post={post} key={post.slug} admin={admin} />
+  ));
+
+  return <ul>{listPost}</ul>;
 };
 
 export default PostFeed;

@@ -9,6 +9,16 @@ import {
 } from "firebase/firestore";
 import UserProfile from "@/components/UserProfile";
 import PostFeed from "@/components/Posts/PostFeed";
+
+export default function UserProfilePage({ user, posts }) {
+  return (
+    <main>
+      <UserProfile user={user} />
+      <PostFeed posts={posts} />
+    </main>
+  );
+}
+
 export async function getServerSideProps({ query: q }) {
   const { username } = q;
 
@@ -39,13 +49,4 @@ export async function getServerSideProps({ query: q }) {
   return {
     props: { user, posts }, // will be passed to the page component as props
   };
-}
-
-export default function UserProfilePage({ user, posts }) {
-  return (
-    <main>
-      <UserProfile user={user} />
-      <PostFeed posts={posts} />
-    </main>
-  );
 }

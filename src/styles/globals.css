@@ -138,3 +138,7 @@ input[type="file"] {
 .pressed {
   filter: brightness(90%);
 }
+
+ul {
+  list-style-type: none;
+}
