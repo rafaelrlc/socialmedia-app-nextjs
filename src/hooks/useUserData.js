@@ -12,7 +12,7 @@ export function useUserData() {
     let unsub;
 
     if (user) {
-      console.log("oi");
+      console.log("USER: ", user);
       const userCollectionRef = doc(db, "users", user.uid);
 
       unsub = onSnapshot(

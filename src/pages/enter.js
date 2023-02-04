@@ -7,7 +7,6 @@ const provider = new GoogleAuthProvider();
 
 const Enter = (props) => {
   const { user, username } = useAuth();
-  console.log(user, username);
 
   const signInWithGoogle = async () => {
     try {

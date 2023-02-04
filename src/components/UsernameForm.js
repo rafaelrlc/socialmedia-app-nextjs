@@ -62,8 +62,6 @@ const UsernameForm = () => {
         const ref = doc(db, "usernames", findUsername);
         const document = await getDoc(ref);
         const documentExists = document.data();
-
-        console.log("Firestore read executed!");
         setIsValid(!documentExists);
         setIsLoading(false);
       }

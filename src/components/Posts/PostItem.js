@@ -11,6 +11,7 @@ const PostCard = styled.div`
   border-radius: 8px;
   display: flex;
   flex-direction: column;
+  gap: 1rem;
 
   & footer {
     display: flex;
@@ -58,8 +59,7 @@ const PostItem = ({ post, admin = false }) => {
         </span>
 
         <div className="push-left">
-          <AiOutlineHeart></AiOutlineHeart>
-          <span>{post.heartCount || 0} Hearts</span>
+          <button className="heart-button">❤️ {post.heartCount || 0} </button>
         </div>
       </footer>
 

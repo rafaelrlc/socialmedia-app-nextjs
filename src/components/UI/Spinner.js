@@ -18,8 +18,8 @@ const StyledSpinner = styled.div`
   }
 `;
 
-const Spinner = ({ show }) => {
-  return show ? <StyledSpinner></StyledSpinner> : null;
+const Spinner = () => {
+  return <StyledSpinner></StyledSpinner>;
 };
 
 export default Spinner;
