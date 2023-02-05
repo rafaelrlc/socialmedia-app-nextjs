@@ -7,6 +7,7 @@ const AdminPage = () => {
     <main>
       <AuthCheck>
         <PostList></PostList>
+        <NewPost></NewPost>
       </AuthCheck>
     </main>
   );

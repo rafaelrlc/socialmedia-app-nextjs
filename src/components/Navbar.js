@@ -5,12 +5,17 @@ import { StyledButton } from "./UI/Button";
 import { useAuth } from "@/hooks/useAuth";
 import UserContext from "@/lib/userContext";
 import { useRouter } from "next/router";
+import DarkModeContext from "@/lib/darkModeContext";
+import { useContext } from "react";
+import { auth } from "@/lib/firebase";
+import { MdDarkMode, MdOutlineDarkMode } from "react-icons/md";
+import { useDarkMode } from "@/hooks/useDarkMode";
 const StyledNavbar = styled.nav`
   height: 70px;
   width: 100%;
   background: white;
   color: var(--colors-text);
-  padding: 0 10rem;
+  padding: 0 5rem;
   font-weight: bold;
   border-bottom: 1px solid var(--color-gray);
   z-index: 99;
@@ -36,10 +41,17 @@ const StyledNavbar = styled.nav`
     border-radius: 50%;
   }
 
-  .user-wid {
+  .right-side {
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  .left-side {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5vh;
   }
 `;
 
@@ -47,24 +59,42 @@ export default function Navbar() {
   const { user, username } = useAuth();
 
   const router = useRouter();
+  const { darkMode, setDarkMode } = useDarkMode();
 
   const mySignOut = () => {
-    signOut(auth);
+    auth.signOut();
     router.reload();
+  };
+
+  const goS = () => {
+    setDarkMode(!darkMode);
   };
   return (
     <StyledNavbar>
       <ul>
-        <li>
+        <li className="left-side">
+          <StyledButton
+            className="dark-mode-btn"
+            color={!darkMode ? "black" : "white"}
+            bg_color={!darkMode ? "white" : "black"}
+            border_color={!darkMode ? "black" : "white"}
+            onClick={goS}
+          >
+            {darkMode == true ? (
+              <MdDarkMode></MdDarkMode>
+            ) : (
+              <MdOutlineDarkMode></MdOutlineDarkMode>
+            )}
+          </StyledButton>
           <Link href="/">
-            <StyledButton className="btn-logo">FEED</StyledButton>
+            <StyledButton className="btn-logo">NEXT SOCIAL</StyledButton>
           </Link>
         </li>
 
         {/* user signed */}
 
         {username && (
-          <div className="user-wid">
+          <div className="right-side">
             <li>
               <StyledButton onClick={mySignOut} color="gray">
                 Sign Out
