@@ -124,6 +124,8 @@ input[type="file"] {
   display: none;
 }
 
+/* Heart Button */
+
 .heart-button {
   padding: 0.7rem 0.85rem;
   border: 1.5px solid rgb(193, 192, 192);
@@ -141,4 +143,8 @@ input[type="file"] {
 
 ul {
   list-style-type: none;
+}
+
+.center {
+  text-align: center;
 }

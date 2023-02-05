@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { StyledButton } from "./UI/Button";
 import { useAuth } from "@/hooks/useAuth";
 import UserContext from "@/lib/userContext";
-
+import { useRouter } from "next/router";
 const StyledNavbar = styled.nav`
   height: 70px;
   width: 100%;
@@ -35,11 +35,23 @@ const StyledNavbar = styled.nav`
   & li {
     border-radius: 50%;
   }
+
+  .user-wid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
 export default function Navbar() {
   const { user, username } = useAuth();
 
+  const router = useRouter();
+
+  const mySignOut = () => {
+    signOut(auth);
+    router.reload();
+  };
   return (
     <StyledNavbar>
       <ul>
@@ -52,8 +64,13 @@ export default function Navbar() {
         {/* user signed */}
 
         {username && (
-          <Fragment>
-            <li className="push-left">
+          <div className="user-wid">
+            <li>
+              <StyledButton onClick={mySignOut} color="gray">
+                Sign Out
+              </StyledButton>
+            </li>
+            <li>
               <Link href="/admin">
                 <StyledButton color="blue">Write Posts</StyledButton>
               </Link>
@@ -63,7 +80,7 @@ export default function Navbar() {
                 <img src={user?.photoURL} />
               </Link>
             </li>
-          </Fragment>
+          </div>
         )}
 
         {/* user not signed */}

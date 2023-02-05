@@ -24,11 +24,9 @@ export async function getServerSideProps({ query: q }) {
 
   const userDoc = await getUserWithUsername(username);
 
-  // JSON serializable data
   let user = null;
   let posts = null;
 
-  // If no user, short circuit to 404 page
   if (!userDoc) {
     return {
       notFound: true,
@@ -47,6 +45,6 @@ export async function getServerSideProps({ query: q }) {
   posts = (await getDocs(postsQuery)).docs.map(postToJSON);
 
   return {
-    props: { user, posts }, // will be passed to the page component as props
+    props: { user, posts },
   };
 }
