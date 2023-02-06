@@ -19,7 +19,7 @@ const NewPost = () => {
   const router = useRouter();
 
   const { username } = useAuth();
-
+  const [alreadyExist, setAlreadyExist] = useState(false);
   const [title, setTitle] = useState("");
   const slug = encodeURI(kebabCase(title));
   const isValid = title.length > 3 && title.length < 100;

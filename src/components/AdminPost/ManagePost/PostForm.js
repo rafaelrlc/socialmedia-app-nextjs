@@ -1,11 +1,13 @@
 import { useForm } from "react-hook-form";
-import reactMarkdown from "react-markdown";
+
 import styles from "../../../styles/admin.module.css";
 import styled from "styled-components";
 import { StyledButton } from "@/components/UI/Button";
 import { updateDoc } from "firebase/firestore";
 import { serverTimestamp } from "firebase/firestore";
 import { PostCard } from "@/components/Posts/PostItem";
+import ReactMarkdown from "react-markdown";
+import { toast } from "react-hot-toast";
 function PostForm({ defaultValues, postRef, preview }) {
   const {
     register,
@@ -17,6 +19,8 @@ function PostForm({ defaultValues, postRef, preview }) {
     defaultValues,
     mode: "onChange",
   });
+
+  // isDirty if the user hasnt interacted (changed defaultValue)
 
   const updatePost = async ({ content, published }) => {
     console.log(content, published);
@@ -36,7 +40,7 @@ function PostForm({ defaultValues, postRef, preview }) {
     <form onSubmit={handleSubmit(updatePost)}>
       {preview && (
         <div className={styles.card}>
-          <PostCard>{watch("content")}</PostCard>
+          <ReactMarkdown>{watch("content")}</ReactMarkdown>
         </div>
       )}
 
