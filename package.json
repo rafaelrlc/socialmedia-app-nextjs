@@ -20,6 +20,7 @@
     "react-animated-heart": "^0.0.7",
     "react-dom": "18.2.0",
     "react-firebase-hooks": "^5.1.1",
+    "react-hook-form": "^7.43.0",
     "react-hot-toast": "^2.4.0",
     "react-icons": "^4.7.1",
     "react-markdown": "^8.0.5",

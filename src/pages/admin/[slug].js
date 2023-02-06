@@ -1,11 +1,12 @@
 import MetaTags from "@/components/Metatags";
-
+import AuthCheck from "@/components/AuthCheck/AuthCheck";
+import PostManager from "@/components/AdminPost/ManagePost/PostManager";
 const UserPosts = () => {
   return (
-    <main>
+    <AuthCheck>
       <MetaTags title="admin page"></MetaTags>
-      <h1>user(admin) posts</h1>
-    </main>
+      <PostManager />
+    </AuthCheck>
   );
 };
 

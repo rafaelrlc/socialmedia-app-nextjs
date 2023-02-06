@@ -3,7 +3,7 @@ import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import styled from "styled-components";
 import { StyledButton } from "../UI/Button";
 
-const PostCard = styled.div`
+export const PostCard = styled.div`
   padding: 2rem;
   margin: 1rem 0;
   background-color: white;

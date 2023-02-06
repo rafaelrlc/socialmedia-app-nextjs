@@ -14,7 +14,6 @@ export const StyledButton = styled.button`
   font-weight: bold;
   border-radius: 0.25rem;
   cursor: pointer;
-  margin: 0.5rem 1rem 0.5rem 0;
 
   &:hover {
     filter: brightness(90%);
@@ -56,6 +55,9 @@ export const StyledButton = styled.button`
   .btn-google img {
     width: 30px;
     margin-right: 10px;
+  }
+  &.admin-btn {
+    margin: 0;
   }
 
   @media only screen and (max-width: 768px) {

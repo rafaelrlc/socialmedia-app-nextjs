@@ -2,7 +2,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { collection, query, getDocs, orderBy } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import { useEffect, useState, Fragment } from "react";
-import PostFeed from "../Posts/PostFeed";
+import PostFeed from "../../Posts/PostFeed";
 import {
   useCollection,
   useCollectionData,
@@ -39,7 +39,7 @@ const PostList = () => {
   return (
     <Fragment>
       <h1 className="center">Manage Your Posts</h1>
-      <PostFeed posts={posts}></PostFeed>
+      <PostFeed posts={posts} admin={true}></PostFeed>
     </Fragment>
   );
 };

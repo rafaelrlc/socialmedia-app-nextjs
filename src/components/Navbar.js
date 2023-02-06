@@ -10,6 +10,7 @@ import { useContext } from "react";
 import { auth } from "@/lib/firebase";
 import { MdDarkMode, MdOutlineDarkMode } from "react-icons/md";
 import { useDarkMode } from "@/hooks/useDarkMode";
+
 const StyledNavbar = styled.nav`
   height: 70px;
   width: 100%;
@@ -45,13 +46,20 @@ const StyledNavbar = styled.nav`
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 1.5rem;
   }
 
   .left-side {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 5vh;
+  }
+
+  @media only screen and (max-width: 768px) {
+    & img {
+      width: 40px;
+      height: 40px;
+    }
   }
 `;
 
@@ -73,21 +81,8 @@ export default function Navbar() {
     <StyledNavbar>
       <ul>
         <li className="left-side">
-          <StyledButton
-            className="dark-mode-btn"
-            color={!darkMode ? "black" : "white"}
-            bg_color={!darkMode ? "white" : "black"}
-            border_color={!darkMode ? "black" : "white"}
-            onClick={goS}
-          >
-            {darkMode == true ? (
-              <MdDarkMode></MdDarkMode>
-            ) : (
-              <MdOutlineDarkMode></MdOutlineDarkMode>
-            )}
-          </StyledButton>
           <Link href="/">
-            <StyledButton className="btn-logo">NEXT SOCIAL</StyledButton>
+            <StyledButton className="btn-logo">HOME</StyledButton>
           </Link>
         </li>
 

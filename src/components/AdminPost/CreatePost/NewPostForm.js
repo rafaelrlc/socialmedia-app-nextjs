@@ -1,10 +1,19 @@
 import { useAuth } from "@/hooks/useAuth";
-import { Input } from "../UI/Input";
+import { Input } from "../../UI/Input";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import kebabCase from "lodash.kebabcase";
 import toast from "react-hot-toast";
-import { StyledButton } from "../UI/Button";
+import { StyledButton } from "../../UI/Button";
+import { db, auth } from "@/lib/firebase";
+import {
+  query,
+  collection,
+  orderBy,
+  doc,
+  setDoc,
+  serverTimestamp,
+} from "firebase/firestore";
 
 const NewPost = () => {
   const router = useRouter();
@@ -15,7 +24,29 @@ const NewPost = () => {
   const slug = encodeURI(kebabCase(title));
   const isValid = title.length > 3 && title.length < 100;
 
-  const createPost = () => {};
+  const createPost = async (e) => {
+    e.preventDefault();
+    const uid = auth.currentUser.uid;
+
+    const ref = doc(db, "users", uid, "posts", slug);
+
+    const data = {
+      title,
+      slug,
+      uid,
+      username,
+      published: false,
+      content: "# write here!",
+      createdAt: serverTimestamp(),
+      updatedAt: serverTimestamp(),
+      heartCount: 0,
+    };
+
+    await setDoc(ref, data);
+    toast.success("Post created!");
+
+    router.push(`/admin/${slug}`); // move to the created post
+  };
 
   return (
     <form onSubmit={createPost}>

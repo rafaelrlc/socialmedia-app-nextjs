@@ -1,6 +1,6 @@
 import AuthCheck from "@/components/AuthCheck/AuthCheck";
-import NewPost from "@/components/UserPost/NewPostForm";
-import PostList from "@/components/UserPost/PostList";
+import NewPost from "@/components/AdminPost/CreatePost/NewPostForm";
+import PostList from "@/components/AdminPost/CreatePost/PostList";
 
 const AdminPage = () => {
   return (
