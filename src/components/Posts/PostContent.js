@@ -1,12 +1,15 @@
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import Card from "../UI/Card";
-// UI component for main post content
+import moment from "moment";
+
 export default function PostContent({ post }) {
   const createdAt =
     typeof post?.createdAt === "number"
       ? new Date(post.createdAt)
-      : post.createdAt.toDate();
+      : post.createdAt.toDate().toISOString();
+
+  const formatDate = moment(createdAt).format("DD-MM-YYYY");
 
   return (
     <Card>
@@ -16,7 +19,7 @@ export default function PostContent({ post }) {
         <Link className="text-info" href={`/${post.username}/`}>
           @{post.username}
         </Link>{" "}
-        on {createdAt.toISOString()}
+        on {formatDate}
       </span>
       <ReactMarkdown>{post?.content}</ReactMarkdown>
     </Card>

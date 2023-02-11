@@ -3,11 +3,10 @@ import { useState } from "react";
 
 const DarkModeProvider = ({ children }) => {
   const [darkMode, setDarkMode] = useState(false);
-  console.log(darkMode);
 
   const values = {
-    darkMode: darkMode,
-    setDarkMode: setDarkMode,
+    darkMode,
+    setDarkMode,
   };
 
   return (

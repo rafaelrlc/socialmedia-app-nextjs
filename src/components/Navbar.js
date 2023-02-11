@@ -1,12 +1,9 @@
 import Link from "next/link";
-import { Fragment } from "react";
 import styled from "styled-components";
 import { StyledButton } from "./UI/Button";
 import { useAuth } from "@/hooks/useAuth";
-import UserContext from "@/lib/userContext";
 import { useRouter } from "next/router";
-import DarkModeContext from "@/lib/darkModeContext";
-import { useContext } from "react";
+
 import { auth } from "@/lib/firebase";
 import { MdDarkMode, MdOutlineDarkMode } from "react-icons/md";
 import { useDarkMode } from "@/hooks/useDarkMode";
@@ -53,6 +50,7 @@ const StyledNavbar = styled.nav`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 3rem;
   }
 
   @media only screen and (max-width: 768px) {
@@ -81,6 +79,19 @@ export default function Navbar() {
     <StyledNavbar>
       <ul>
         <li className="left-side">
+          <StyledButton
+            className="dark-mode-btn"
+            color={!darkMode ? "black" : "white"}
+            bg_color={!darkMode ? "white" : "black"}
+            border_color={!darkMode ? "black" : "white"}
+            onClick={goS}
+          >
+            {darkMode == true ? (
+              <MdDarkMode></MdDarkMode>
+            ) : (
+              <MdOutlineDarkMode></MdOutlineDarkMode>
+            )}
+          </StyledButton>
           <Link href="/">
             <StyledButton className="btn-logo">HOME</StyledButton>
           </Link>

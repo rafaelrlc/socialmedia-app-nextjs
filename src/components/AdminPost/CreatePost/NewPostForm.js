@@ -1,19 +1,12 @@
 import { useAuth } from "@/hooks/useAuth";
+import { StyledButton } from "../../UI/Button";
 import { Input } from "../../UI/Input";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import kebabCase from "lodash.kebabcase";
 import toast from "react-hot-toast";
-import { StyledButton } from "../../UI/Button";
 import { db, auth } from "@/lib/firebase";
-import {
-  query,
-  collection,
-  orderBy,
-  doc,
-  setDoc,
-  serverTimestamp,
-} from "firebase/firestore";
+import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 
 const NewPost = () => {
   const router = useRouter();

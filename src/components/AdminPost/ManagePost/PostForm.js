@@ -1,13 +1,10 @@
-import { useForm } from "react-hook-form";
-
 import styles from "../../../styles/admin.module.css";
-import styled from "styled-components";
 import { StyledButton } from "@/components/UI/Button";
-import { updateDoc } from "firebase/firestore";
-import { serverTimestamp } from "firebase/firestore";
-import { PostCard } from "@/components/Posts/PostItem";
-import ReactMarkdown from "react-markdown";
+import { updateDoc, serverTimestamp } from "firebase/firestore";
+import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
+import ReactMarkdown from "react-markdown";
+
 function PostForm({ defaultValues, postRef, preview }) {
   const {
     register,
@@ -23,8 +20,6 @@ function PostForm({ defaultValues, postRef, preview }) {
   // isDirty if the user hasnt interacted (changed defaultValue)
 
   const updatePost = async ({ content, published }) => {
-    console.log(content, published);
-
     await updateDoc(postRef, {
       content,
       published,

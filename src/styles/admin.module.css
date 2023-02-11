@@ -14,8 +14,6 @@
   min-width: 250px;
   min-height: 200px;
   text-align: center;
-
-  position: sticky;
   top: 80px;
   height: 0;
 }

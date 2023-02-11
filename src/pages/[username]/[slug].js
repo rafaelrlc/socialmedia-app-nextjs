@@ -22,16 +22,10 @@ import {
 const UserPostPage = (props) => {
   const [isLoading, setIsLoading] = useState(false);
 
-  const postRef = doc(db, props.path);
-  const [realtimePost] = useDocumentData(postRef);
-
-  const post = realtimePost || props.post;
-  //console.log(props.post);
   return (
     <main>
       {isLoading && <Spinner></Spinner>}
-      {post && <PostContent post={props.post}></PostContent>}
-      {!post && <h1>404</h1>}
+      <PostContent post={props.post}></PostContent>
     </main>
   );
 };
@@ -76,6 +70,6 @@ export async function getStaticProps({ params }) {
 
   return {
     props: { post, path },
-    revalidate: 5000,
+    revalidate: 500,
   };
 }

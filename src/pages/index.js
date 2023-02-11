@@ -19,6 +19,7 @@ import { postToJSON } from "@/lib/firebase";
 import PostFeed from "@/components/Posts/PostFeed";
 
 const LIMIT = 10;
+
 export default function Home(props) {
   const [posts, setPosts] = useState(props.posts);
   const [isLoading, setIsLoading] = useState(false);
@@ -51,6 +52,7 @@ export default function Home(props) {
       setPostsEnd(true); // end
     }
   };
+
   return (
     <main>
       <PostFeed posts={posts}></PostFeed>

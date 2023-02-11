@@ -1,4 +1,3 @@
-import Link from "next/link";
 import PostItem from "./PostItem";
 
 const PostFeed = ({ posts, admin }) => {

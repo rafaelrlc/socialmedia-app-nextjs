@@ -1,4 +1,4 @@
-import { async } from "@firebase/util";
+import { StyledButton } from "../../UI/Button";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import { doc, getDoc } from "firebase/firestore";
@@ -6,7 +6,6 @@ import { db } from "@/lib/firebase";
 import { useAuth } from "@/hooks/useAuth";
 import { useDocumentData } from "react-firebase-hooks/firestore";
 import styles from "../../../styles/admin.module.css";
-import { StyledButton } from "../../UI/Button";
 import PostForm from "./PostForm";
 
 const PostManager = () => {
@@ -18,7 +17,6 @@ const PostManager = () => {
 
   const ref = doc(db, "users", user.uid, "posts", slug);
   const [post] = useDocumentData(ref);
-  console.log(post);
 
   // const getPost = async () => {
   //   const docSnap = await getDoc(ref);
