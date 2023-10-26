@@ -2,11 +2,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Social Media App
 
-![My Image](image.png)
-
-
 Node. js v12. 22.0 is required.
-
 
 Install dependencies of the project:
  
