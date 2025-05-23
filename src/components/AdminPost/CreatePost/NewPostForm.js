@@ -52,7 +52,7 @@ const NewPost = () => {
       <p>
         <strong>Slug:</strong> {slug}
       </p>
-      <StyledButton color="green" type="submit" disabled={!isValid}>
+      <StyledButton color="green" type="submit" disabled={!isValid} style={{ marginTop: "15px" }}>
         Create New Post
       </StyledButton>
     </form>

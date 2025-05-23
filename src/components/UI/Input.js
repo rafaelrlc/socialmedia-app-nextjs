@@ -12,7 +12,7 @@ export const Input = styled.input`
   &.admin_input {
     outline: none;
     border: none;
-    font-size: 2.3rem;
+    font-size: 1.5rem;
     width: 100%;
     padding: 5px 10px;
     margin-bottom: 3vh;

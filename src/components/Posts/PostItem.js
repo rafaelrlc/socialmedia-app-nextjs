@@ -36,9 +36,18 @@ export const PostCard = styled.div`
   }
 `;
 
-const PostItem = ({ post, admin = false }) => {
+const PostItem = ({
+  post,
+  admin = false,
+  onDeletePost,
+  currentUser,
+  profileUser,
+}) => {
   const wordCount = post?.content.trim().split(/\s+/g).length;
   const readTime = (wordCount / 100 + 1).toFixed(0);
+
+  const canDelete =
+    currentUser && profileUser && currentUser.uid === profileUser.uid && onDeletePost;
 
   return (
     <PostCard>
@@ -61,9 +70,17 @@ const PostItem = ({ post, admin = false }) => {
         <div className="push-left">
           <button className="heart-button">❤️ {post.heartCount || 0} </button>
         </div>
+        {canDelete && (
+          <StyledButton
+            color="red"
+            style={{ marginLeft: "1rem" }}
+            onClick={() => onDeletePost(post.id)}
+          >
+            Deletar
+          </StyledButton>
+        )}
       </footer>
 
-      {/* If admin view, show extra controls for user */}
       {admin && (
         <>
           <Link href={`/admin/${post.slug}`}>

@@ -4,7 +4,7 @@ export const StyledButton = styled.button`
   background-color: ${(props) => (props.color ? props.color : "gray")};
   border: none;
   color: white;
-  padding: 1rem 2rem;
+  padding: 0.70rem 1.25rem;
   display: flex;
   align-items: center;
   text-align: center;
@@ -12,7 +12,7 @@ export const StyledButton = styled.button`
   text-decoration: none;
   font-family: "Noto Sans", sans-serif;
   font-weight: bold;
-  border-radius: 0.25rem;
+  border-radius: 0.65rem;
   cursor: pointer;
 
   &:hover {
